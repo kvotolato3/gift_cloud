@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GiftCloud</title>
+    <title>Gift Cloud</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <div>
+      <div>
+        <%= link_to 'Gift Cloud', root_path %>
+      </div>
+      <nav>
+        <div>
+          <% if user_signed_in? %>
+            Logged in as
+            <%= link_to(edit_user_registration_path) do %>
+              <%= current_user.email %>
+            <% end %>
+            <strong> | </strong>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+          <% end %>
+        </div>
+      </nav>
+      <div class='notice'><p><%= notice %></p></div>
+      <div class='alert'><p><%= alert %></p></div>
+    </div>
     <%= yield %>
   </body>
 </html>
