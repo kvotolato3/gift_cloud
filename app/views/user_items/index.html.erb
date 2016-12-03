@@ -1,0 +1,9 @@
+Items I wish to receive from others:
+
+<%= link_to 'New Item', new_user_user_item_path %>
+
+<ul>
+  <% @user_items.each do |item| %>
+    <li><%= item.name %>, Can be claimed more than once?: <%= item.claim_more_than_once %></li>
+  <% end %>
+</ul>

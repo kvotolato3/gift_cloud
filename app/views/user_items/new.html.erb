@@ -1,0 +1,7 @@
+<%= form_for [@user, @user_item] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :claim_more_than_once %>
+  <%= f.check_box :claim_more_than_once %>
+  <%= f.submit %>
+<% end %>
