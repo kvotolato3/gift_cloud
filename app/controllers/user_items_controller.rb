@@ -16,7 +16,6 @@ class UserItemsController < ApplicationController
     item_name = params[:user_item][:name]
     cmto = params[:user_item][:claim_more_than_once]
     @user_item = UserItem.new(user: @user, name: item_name, claim_more_than_once: cmto)
-    binding.pry
 
     if @user_item.save
       redirect_to user_user_items_path(@user), notice: 'Item successfully created.'
