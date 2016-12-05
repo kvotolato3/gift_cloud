@@ -1,0 +1,15 @@
+<% if @occasion.errors.any? %>
+  <ul>
+    <% @occasion.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @occasion do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.submit %>
+<% end %>
