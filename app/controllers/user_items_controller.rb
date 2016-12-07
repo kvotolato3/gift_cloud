@@ -8,7 +8,14 @@ class UserItemsController < ApplicationController
   end
 
   def index
-    @user_items = @user.user_items
+    @user_items = []
+    @user.user_items.each do |ui|
+      ui_hash = {}
+      ui_hash[:name] = ui.name
+      ui_hash[:claim_more_than_once] = ui.claim_more_than_once
+      ui_hash[:occasions] = ui.occasions
+      @user_items.push(ui_hash)
+    end
     @occasions = @user.occasion_users.any? ? @user.occasions : nil
   end
 

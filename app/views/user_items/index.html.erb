@@ -4,7 +4,14 @@ Items I wish to receive from others:
 
 <ul>
   <% @user_items.each do |item| %>
-    <li><%= item.name %>, Can be claimed more than once?: <%= item.claim_more_than_once %></li>
+    <li>
+      <%= item[:name] %>, Multiple claims allowed?: <%= item[:claim_more_than_once] %>
+      <% item[:occasions].each do |o| %>
+        <div>
+          <%=o.name%>
+        </div>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
