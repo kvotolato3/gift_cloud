@@ -2,6 +2,9 @@ class UserItemsController < ApplicationController
   before_action :set_user, only: [:index, :new, :create]
 
   def landing_page
+    if user_signed_in?
+      redirect_to user_user_items_path(current_user)
+    end
   end
 
   def index
