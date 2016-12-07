@@ -20,7 +20,12 @@ Items I wish to receive from others:
 <% if @occasions %>
   <ul>
     <% @occasions.each do |o| %>
-      <li><%= o.name %> | Date:  <%= o.date %></li>
+      <li>
+        <%= o.name %>
+          <% if o.date? %>
+            on <%= o.date.to_formatted_s(:long_ordinal)%>
+          <% end %>
+      </li>
     <% end %>
   </ul>
 <% end %>
