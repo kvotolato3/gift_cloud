@@ -6,10 +6,22 @@
   </ul>
 <% end %>
 
+<h3>New Item</h3>
 <%= form_for [@user, @user_item] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :claim_more_than_once %>
+  <%= f.label :claim_more_than_once, "Can this item be claimed more than once?" %>
   <%= f.check_box :claim_more_than_once %>
-  <%= f.submit %>
+  <h4>Share with the following occasions: </h4>
+  <div>
+    <% if @occasions %>
+      <% @occasions.each do |o| %>
+        <%= o.name%>
+        <%= check_box_tag 'occasion_ids[]', o.id %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.submit 'Create Item!' %>
 <% end %>
+
+

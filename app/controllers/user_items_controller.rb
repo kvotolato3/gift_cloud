@@ -14,6 +14,9 @@ class UserItemsController < ApplicationController
 
   def new
     @user_item = UserItem.new
+    if occasion_users = OccasionUser.where(user: current_user)
+     @occasions = occasion_users.map{ |ou| Occasion.find(ou.occasion_id)}
+    end
   end
 
   def create
@@ -22,6 +25,11 @@ class UserItemsController < ApplicationController
     @user_item = UserItem.new(user: @user, name: item_name, claim_more_than_once: cmto)
 
     if @user_item.save
+      if occasion_ids = params[:occasion_ids]
+        occasion_ids.each do |id|
+          oui = OccasionUserItem.create(occasion_id: id.to_i, user_item: @user_item)
+        end
+      end
       redirect_to user_user_items_path(@user), notice: 'Item successfully created.'
     else
       render :new
