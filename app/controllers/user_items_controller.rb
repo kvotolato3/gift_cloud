@@ -9,6 +9,7 @@ class UserItemsController < ApplicationController
 
   def index
     @user_items = @user.user_items
+    @occasions = @user.occasion_users.any? ? @user.occasions : nil
   end
 
   def new

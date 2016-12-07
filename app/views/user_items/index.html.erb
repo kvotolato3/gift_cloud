@@ -10,3 +10,10 @@ Items I wish to receive from others:
 
 <%= link_to 'New Occasion', new_occasion_path %>
 
+<% if @occasions %>
+  <ul>
+    <% @occasions.each do |o| %>
+      <li><%= o.name %> | Date:  <%= o.date %></li>
+    <% end %>
+  </ul>
+<% end %>
