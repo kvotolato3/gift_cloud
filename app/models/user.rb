@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :occasion_users
   has_many :occasions, through: :occasion_users
 
+  validates :nickname, presence: true
 end
