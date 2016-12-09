@@ -21,10 +21,12 @@ Items I wish to receive from others:
   <ul>
     <% @occasions.each do |o| %>
       <li>
-        <%= o.name %>
-          <% if o.date? %>
-            on <%= o.date.to_formatted_s(:long_ordinal)%>
-          <% end %>
+        <%= link_to(occasion_path(o)) do %>
+          <%= o.name %>
+            <% if o.date? %>
+              on <%= o.date.to_formatted_s(:long_ordinal)%>
+            <% end %>
+        <% end %>
       </li>
     <% end %>
   </ul>

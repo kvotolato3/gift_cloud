@@ -1,5 +1,9 @@
 class OccasionsController < ApplicationController
 
+  def show
+    @occasion = Occasion.find(params[:id])
+  end
+
   def new
     @occasion = Occasion.new
   end
