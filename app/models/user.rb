@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :user_items
   has_many :occasion_users
   has_many :occasions, through: :occasion_users
+  has_many :claims
 
   validates :nickname, presence: true
 end
