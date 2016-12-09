@@ -1,7 +1,8 @@
 class OccasionsController < ApplicationController
+before_action :set_occasion, only: [:show]
 
   def show
-    @occasion = Occasion.find(params[:id])
+    @occasion_user_items = @occasion.user_items_array
   end
 
   def new
@@ -22,6 +23,10 @@ class OccasionsController < ApplicationController
   end
 
 private
+  def set_occasion
+    @occasion = Occasion.find(params[:id])
+  end
+
   def occasion_params
     params.require(:occasion).permit(:id, :name, :date)
   end

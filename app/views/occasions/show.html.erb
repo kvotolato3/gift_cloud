@@ -1,1 +1,10 @@
 <h1><%= @occasion.name %></h1>
+
+<% @occasion_user_items.each do |oui| %>
+  <h2><%= oui[:nickname] %></h2>
+  <ul>
+    <% oui[:user_items].each do |user_item| %>
+      <li><%= user_item.name %></li>
+    <% end %>
+  </ul>
+<% end %>
