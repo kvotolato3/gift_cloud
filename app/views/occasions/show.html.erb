@@ -6,9 +6,7 @@
     <% oui[:user_items].each do |user_item| %>
       <li>
         <%= user_item.name %>
-        <span class='js-claim-container'>
-          <button class='js-claim' data-user-item-id='<%=user_item.id%>' data-user-id='<%=current_user.id%>'> Claim</button>
-        </span>
+        <%= react_component('Claim', {currentUserId: current_user.id, userItemId: user_item.id}, tag: 'span') %>
       </li>
     <% end %>
   </ul>
