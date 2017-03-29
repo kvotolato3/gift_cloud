@@ -4,7 +4,12 @@
   <h2><%= oui[:nickname] %></h2>
   <ul>
     <% oui[:user_items].each do |user_item| %>
-      <li><%= user_item.name %></li>
+      <li>
+        <%= user_item.name %>
+        <span class='js-claim-container'>
+          <button class='js-claim' data-user-item-id='<%=user_item.id%>' data-user-id='<%=current_user.id%>'> Claim</button>
+        </span>
+      </li>
     <% end %>
   </ul>
 <% end %>
