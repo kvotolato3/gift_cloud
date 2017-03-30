@@ -4,10 +4,7 @@
   <h2><%= oui[:nickname] %></h2>
   <ul>
     <% oui[:user_items].each do |user_item| %>
-      <li>
-        <%= user_item.name %>
-        <%= react_component('Claim', {currentUserId: current_user.id, userItemId: user_item.id}, tag: 'span') %>
-      </li>
+        <%= react_component('OccasionUserItem', {currentUserId: current_user.id, userItem: user_item, }, tag: 'span') %>
     <% end %>
   </ul>
 <% end %>
