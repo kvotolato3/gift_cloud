@@ -1,17 +1,24 @@
 class OccasionUserItem extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      claims: [], //TODO: Get claims from db
+    };
+  }
+  claimExists(){
+    return this.state.claims.length >= 1
+  }
   render () {
     return (
       <li>
         {this.props.userItem.name}
-        <span className='js-claim-container' >
-          <button className='js-claim' data-user-item-id={this.props.userItem.id} data-user-id={this.props.currentUserId}>Claim</button>
-        </span>
+        {this.claimExists() ? null : <NewClaim claimerUserId={this.props.currentUserId} userItemId={this.props.userItem.id}/> }
       </li>
     );
   }
 }
 
-Claim.propTypes = {
+OccasionUserItem.propTypes = {
   userItem: React.PropTypes.object,
-  currentUserId: React.PropTypes.string
+  currentUserId: React.PropTypes.number
 };
